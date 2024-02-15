@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mounika Marella Data Analyst Resume</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML5 Resume/CV Template for Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS-->
+	<script defer src="assets/fontawesome/js/all.min.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/orbit-1.css">
+
+    <style>
+        #scrollToTop {
+          display: none;
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          padding: 10px 15px;
+          cursor: pointer;
+        }
+
+        /* Add your CSS styles for the resume template here */
+        #profilePicture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head> 
+
+<body>
+
+
+
+    <div class="wrapper mt-lg-5">
+        <div class="sidebar-wrapper">
+            <div class="profile-container">
+                <img class="profile" src="assets/images/Mouni_headshot.jpeg" alt="" style="object-fit: cover; border-radius: 100%; width: 150px; height: 150px;"/>
+                <h1 class="name">Mounika Marella</h1>
+                <h3 class="tagline">Data Analyst</h3>
+            </div><!--//profile-container-->
+            
+            <div class="contact-container container-block">
+                <ul class="list-unstyled contact-list">
+                    <!-- <li class="email"><i class="fa-solid fa-envelope"></i><a href="mailto: marellma@mail.uc.edu"> show my mail</a></li> -->
+					<li class="email" id = "email" onclick ="showhideEmail()"> <i class="fa-solid fa-envelope"></i> Show Mouni's Email</li>
+					<script src="email.js"></script><br>
+                    <li class="phone"><i class="fa-solid fa-phone"></i><a href="tel:+1 513 462 5457">1513 462 5457</a></li>
+                    <!--<li class="website"><i class="fa-solid fa-globe"></i><a href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/" target="_blank">portfoliosite.com</a></li> -->
+                    <li class="linkedin"><i class="fa-brands fa-linkedin-in"></i><a href="#" target="_blank">linkedin.com/in/marella-mounikarao/</a></li>
+                    <li class="github"><i class="fa-brands fa-github"></i><a href="#" target="_blank">github.com/marellma</a></li>
+                    <!--<li class="twitter"><i class="fa-brands fa-twitter"></i><a href="https://twitter.com/3rdwave_themes" target="_blank">@twittername</a></li> -->
+                </ul>
+            </div><!--//contact-container-->
+            <div class="education-container container-block">
+                <h2 class="container-block-title">Education</h2>
+                <div class="item">
+                    <h4 class="degree">MS in Information Technology</h4>
+                    <h5 class="meta">University of Cincinnati</h5>
+	                    <div class="time">2023 - 2024</div>
+						<p> <a href="waph_course.html"> Web Development course details </a> </p>
+                </div><!--//item-->
+                <div class="item">
+                    <h4 class="degree">Bachelors in Information Technology</h4>
+                    <h5 class="meta">SRKR Engineering College</h5>
+                    <div class="time">2017 - 2021</div>
+                </div><!--//item-->
+            </div><!--//education-container-->
+            
+            <div class="languages-container container-block">
+                <h2 class="container-block-title">Languages</h2>
+                <ul class="list-unstyled interests-list">
+                    <li>Telugu <span class="lang-desc">(Native)</span></li>
+                    <li>English <span class="lang-desc">(Professional)</span></li>
+                </ul>
+            </div><!--//interests-->
+            
+            <div class="interests-container container-block">
+                <h2 class="container-block-title">Interests</h2>
+                <ul class="list-unstyled interests-list">
+                    <li>Dancing</li>
+                    <li>Painting</li>
+                    <li>Cooking</li>
+                </ul>
+				<br>
+				<p id="digital-clock"> <b> Current time is: </b></p>
+				<script>
+					function displayTime(){
+						document.getElementById('digital-clock').innerHTML="<b>Current Time is:</b><br> "+ new Date();
+					}
+					setInterval(displayTime,500);
+				</script>
+				
+				<p> <b>Wanna see Mouni's analog clock </b> </p>
+				<canvas id="analog-clock" width="100" height="100" style="background-color:lightgray"> </canvas>
+				<script src="https://waph-uc.github.io/clock.js"></script>
+				<script>
+					var canvas = document.getElementById("analog-clock");
+					var ctx=canvas.getContext("2d");
+					var radius = canvas.height/2;
+					ctx.translate(radius, radius);
+					radius= radius*0.90;
+					setInterval(drawClock,1000);
+
+					function drawClock(){
+						drawFace(ctx,radius);
+						drawNumbers(ctx, radius);
+						drawTime(ctx,radius);
+					}
+				</script>
+				
+				
+            </div><!--//interests-->
+            
+        </div><!--//sidebar-wrapper-->
+        
+        <div class="main-wrapper">
+
+            <section class="section summary-section">
+
+                <h2 class="section-title"> <div id="welcomeMessage"></div>
+                    <script>
+                        // Function to set a cookie with expiration date
+                        function setCookie(name, value, days) {
+                            const date = new Date();
+                            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                            const expires = "expires=" + date.toUTCString();
+                            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+                        }
+                    
+                        // Function to get the value of a cookie
+                        function getCookie(name) {
+                            const decodedCookie = decodeURIComponent(document.cookie);
+                            const cookies = decodedCookie.split(';');
+                            for (let i = 0; i < cookies.length; i++) {
+                                const cookie = cookies[i].trim();
+                                if (cookie.indexOf(name + '=') === 0) {
+                                    return cookie.substring(name.length + 1);
+                                }
+                            }
+                            return null;
+                        }
+                    
+                        // Check if the 'visited' cookie exists
+                        const lastVisit = getCookie('visited');
+                        if (lastVisit) {
+                            // Display welcome back message with last visit date/time
+                            document.getElementById('welcomeMessage').innerText = "Welcome back! Your last visit was " + lastVisit;
+                        } else {
+                            // Set the 'visited' cookie with the current date/time
+                            const currentDate = new Date().toUTCString();
+                            setCookie('visited', currentDate, 365); // Cookie lasts for 1 year
+                            // Display first-time visit message
+                            document.getElementById('welcomeMessage').innerText = "Welcome to my homepage!";
+                        }
+                    </script>
+                    </h2>
+                <p> Share happiness every minute. Here is a joke for my profile visitors! :)</p>
+            
+               <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> 
+                <script>
+                $.get("https://v2.jokeapi.dev/joke/Any?type=single",
+							function(result){
+								if(result == null){
+									$("#response").text("It is an invalid response from Joke program API");
+									}
+                                $("#response").text("A joke of the day: " + result.joke);
+							}
+					);
+                </script>
+                <div id="response"></div>
+                
+            </section>
+            
+            <section class="section summary-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-user"></i></span>About Me</h2>
+                <div class="summary">
+                    <p> I am a data analyst enthusiast with a passion for uncovering insights from data. Skilled in SQL, Python, and data visualization, I am eager to apply my analytical abilities to real-world projects. Strong communicator and team player, dedicated to continuous learning and contributing to the success of the team.  </p>
+                </div><!--//summary-->
+            </section><!--//section-->
+            
+            <section class="section experiences-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span>Experiences</h2>
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">Java Developer</h3>
+                            <div class="time">Aug 2021 - Aug 2023</div>
+                        </div><!--//upper-row-->
+                        <div class="company">TATA Consultancy Services, Hyderabad, IN </div>
+                    </div><!--//meta-->
+                    <div class="details">
+						<ul>
+							<li>Experienced in network connectivity management for IP and Broadband networks at ERICSSON, utilizing technologies such as JAVA, JSP Framework, PostgreSQL, Hibernate, REST, and Shell Script on LINUX OS.</li>
+							<li>Enhanced network connectivity manager web application by adding features, securing against vulnerabilities like log4j, and resolving technical issues.</li>
+							<li>Facilitated knowledge transfer sessions for new team members, improving domain knowledge and presentation skills, while collaborating with managers, partners, and clients to meet project deadlines using agile practices.</li>
+						</ul>
+                       <!-- <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.</p>  
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+               -->     </div><!--//details-->
+                </div><!--//item-->
+                
+           <!--     <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">Senior Software Engineer</h3>
+                            <div class="time">2018 - 2023</div>
+                        </div>
+                        <div class="company">Google, London</div>
+                    </div>
+                    <div class="details">
+                        <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>  
+                        
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">UI Developer</h3>
+                            <div class="time">2016 - 2018</div>
+                        </div>
+                        <div class="company">Amazon, London</div>
+                    </div>
+                    <div class="details">
+                        <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>  
+                    </div>
+                </div>  
+				-->
+                
+            </section> 
+			
+			<section class="section experiences-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span>Publication</h2>
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">www.ijera.com | SRKR Engineering college</h3>
+                            <div class="time">Dec 2019 – Feb 2020</div>
+                        </div><!--//upper-row-->
+                      <!--  <div class="company">TATA Consultancy Services, Hyderabad, IN </div> -->
+                    </div><!--//meta-->
+                    <div class="details">
+						<ul>
+							<li>Published a research paper ‘M.Mounika, et.al “A Novel Robotic Aid for Physically Challenged Implemented using Image Processing” International Journal of Engineering Research and Applications (IJERA), vol.10 (02), 2020, pp 53-57.’ In www.ijera.com</li>
+							<li>This focuses on providing independent life to physically challenged people in their daily activities.</li>
+							<li>Developed using PYTHON, Numpy and Pandas modules, Image Processing, Internet of Things.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			
+			
+			
+			
+			
+			
+            
+            <section class="section projects-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-archive"></i></span>Projects</h2>
+               
+                <div class="item">
+                    <span class="project-title"> <b>Academic Project | Comparative Analysis on classification of News Articles using ML and DL Algorithms </b></span> <span class="project-tagline"><ul> <li>Used SVM, Random Forest, Naïve Bayes, Logistic Regression, LSTM algorithms. After modeling and fine tuning of parameters, LSTM performed well with 96.8% accuracy comparatively.</li></ul></span>
+                </div><!--//item-->
+				
+				<div class="item">
+                    <span class="project-title"> <b> Farmer Assistance Website Interfaced with IOT </b></span> <span class="project-tagline"><ul> <li> Developed a website by integrating IOT devices. In this, data is received from IOT devices and crop suggestions were given to the farmers. Here, farmers can control water from the website. </li></ul></span>
+                </div><!--//item-->
+				
+               <!-- <div class="item">
+                    <span class="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-web-development-agencies-devstudio/" target="_blank">DevStudio</a></span> - 
+                    <span class="project-tagline">A responsive website template designed to help web developers/designers market their services. </span>
+                </div> -->
+            </section><!--//section-->
+            
+            <section class="skills-section section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-rocket"></i></span>Skills &amp; Proficiency</h2>
+                <div class="skillset">        
+                    <div class="item">
+                        <h3 class="level-title">Python</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 99%" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                               
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Java</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                              
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">HTML5 &amp; CSS</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                 
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Javascript</h3>
+                        <div class="progress level-bar">
+							    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">SQL</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                  
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">ML &amp; DL</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                 
+                    </div><!--//item-->
+                    
+                </div>  
+            </section><!--//skills-section-->
+
+            <section class="skills-section section">
+                <hr>
+                <p> Here are the random picked people who visited my resume </p>
+
+                <div id="contactInfo">
+                    <p><b>Contact Information</b></p>
+                    <p>Name: kooper</p>
+                    <p>Email: kooper@gmail.com</p>
+                    <img src="" alt="Profile Picture" id="profilePicture">
+                </div>
+                
+                <script>
+                    fetch('https://randomuser.me/api/')
+                        .then(response => response.json())
+                        .then(data => {
+                            const user = data.results[0];
+                            const profilePicture = user.picture.large;
+                            const profilePictureElement = document.getElementById('profilePicture');
+                            profilePictureElement.src = profilePicture;
+                        })
+                        .catch(error => console.error('Error fetching profile picture:', error));
+                </script>
+
+            </section>
+            
+            <button id="scrollToTop" onclick="scrollToTop()">Scroll To Top</button>
+
+            <script>
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("scrollToTop").style.display = "block";
+                } else {
+                document.getElementById("scrollToTop").style.display = "none";
+                }
+            }
+
+            function scrollToTop() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+            </script>
+
+        </div><!--//main-body-->
+    </div>
+ 
+    <footer class="footer">
+        <div class="text-center">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <p>&copy; 2024 Mounika Marella</p>
+			<!-- My Flag COunter -->
+				<p><b> Wanna now how many people visited my resume </b> </p>
+				<a href="https://info.flagcounter.com/33hN"><img src="https://s11.flagcounter.com/count2/33hN/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+        </div><!--//container-->
+    </footer><!--//footer-->
+        
+</body>
+</html> 
+
