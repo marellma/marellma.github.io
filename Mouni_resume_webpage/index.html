@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/orbit-1.css">
+    <link rel="stylesheet" href="styles.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
     <style>
         #scrollToTop {
           display: none;
@@ -40,7 +42,30 @@
             border-radius: 50%;
             object-fit: cover;
         }
+
+        .timeline {
+        margin-bottom: 20px;
+        }
+
+        .event {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .event-header {
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .event-body {
+            padding: 10px;
+            display: none;
+        }
     </style>
+
 </head> 
 
 <body>
@@ -188,11 +213,32 @@
             </section>
             
             <section class="section summary-section">
+                <div ng-app="resumeApp" ng-controller="AboutController">
                 <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-user"></i></span>About Me</h2>
                 <div class="summary">
                     <p> I am a data analyst enthusiast with a passion for uncovering insights from data. Skilled in SQL, Python, and data visualization, I am eager to apply my analytical abilities to real-world projects. Strong communicator and team player, dedicated to continuous learning and contributing to the success of the team.  </p>
                 </div><!--//summary-->
+                <button ng-click="copyAbout()">Copy About</button>
+                </div>
+
+                <script>
+                    angular.module('resumeApp', [])
+                    .controller('AboutController', function($scope) {
+                        $scope.about = `I am a data analyst enthusiast with a passion for uncovering insights from data. Skilled in SQL, Python, and data visualization, I am eager to apply my analytical abilities to real-world projects. Strong communicator and team player, dedicated to continuous learning and contributing to the success of the team.`;
+                
+                        $scope.copyAbout = function() {
+                        var tempInput = document.createElement('textarea');
+                        tempInput.value = $scope.about;
+                        document.body.appendChild(tempInput);
+                        tempInput.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(tempInput);
+                        alert('About section copied to clipboard.');
+                        };
+                    });
+                </script>
             </section><!--//section-->
+
             
             <section class="section experiences-section">
                 <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span>Experiences</h2>
@@ -339,26 +385,45 @@
             </section><!--//skills-section-->
 
             <section class="skills-section section">
-                <hr>
-                <p> Here are the random picked people who visited my resume </p>
+                
+                <div class="timeline">
+                    <div class="event">
+                        <div class="event-header"> Wanna see who visited my profile </div>
+                        <div class="event-body">
+                            <p> Here are the random picked people who visited my resume </p>
 
-                <div id="contactInfo">
-                    <p><b>Contact Information</b></p>
-                    <p>Name: kooper</p>
-                    <p>Email: kooper@gmail.com</p>
-                    <img src="" alt="Profile Picture" id="profilePicture">
+                            <div id="contactInfo">
+                                <p><b>Contact Information</b></p>
+                                <p>Name: kooper</p>
+                                <p>Email: kooper@gmail.com</p>
+                                <img src="" alt="Profile Picture" id="profilePicture">
+                            </div>
+                            
+                            <script>
+                                fetch('https://randomuser.me/api/')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const user = data.results[0];
+                                        const profilePicture = user.picture.large;
+                                        const profilePictureElement = document.getElementById('profilePicture');
+                                        profilePictureElement.src = profilePicture;
+                                    })
+                                    .catch(error => console.error('Error fetching profile picture:', error));
+                            </script>
+
+                        </div>
+                    </div>
+                    
                 </div>
                 
-                <script>
-                    fetch('https://randomuser.me/api/')
-                        .then(response => response.json())
-                        .then(data => {
-                            const user = data.results[0];
-                            const profilePicture = user.picture.large;
-                            const profilePictureElement = document.getElementById('profilePicture');
-                            profilePictureElement.src = profilePicture;
-                        })
-                        .catch(error => console.error('Error fetching profile picture:', error));
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script >
+                    $(document).ready(function(){
+                    $('.event').click(function(){
+                        $(this).find('.event-body').slideToggle();
+                    });
+                });
+                
                 </script>
 
             </section>
